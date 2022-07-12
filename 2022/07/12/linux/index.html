@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.xurunzhi.monster","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Linux命令温故知新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux">
+<meta property="og:url" content="http://blog.xurunzhi.monster/2022/07/12/linux/index.html">
+<meta property="og:site_name" content="旧岛">
+<meta property="og:description" content="Linux命令温故知新">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-12T06:17:28.000Z">
+<meta property="article:modified_time" content="2022-07-12T10:42:57.465Z">
+<meta property="article:author" content="XuRunZhi">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://blog.xurunzhi.monster/2022/07/12/linux/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>linux | 旧岛</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">旧岛</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录日常</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.xurunzhi.monster/2022/07/12/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tx.jpg">
+      <meta itemprop="name" content="XuRunZhi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="旧岛">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-12 14:17:28 / 修改时间：18:42:57" itemprop="dateCreated datePublished" datetime="2022-07-12T14:17:28+08:00">2022-07-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Linux命令温故知新</p>
+<a id="more"></a>
+
+<h1 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h1><h2 id="文件和目录的命令"><a href="#文件和目录的命令" class="headerlink" title="文件和目录的命令"></a>文件和目录的命令</h2><h3 id="命令cd"><a href="#命令cd" class="headerlink" title="命令cd"></a>命令cd</h3><p>进入目录的命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">cd</span> /temp/</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">pwd</span></span></span><br><span class="line">/tmp</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令-mkdir-mp"><a href="#命令-mkdir-mp" class="headerlink" title="命令 mkdir [-mp]"></a>命令 mkdir [-mp]</h3><p>mkdir是make directory的简写，用来创建目录</p>
+<p>-m -p是选项</p>
+<p>-m用于指定要创建目录的权限，-p选项可以一次性创建不存在的目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mkdir /tmp/<span class="built_in">test</span>/123</span></span><br><span class="line">mkdir: 无法创建目录 '/tmp/test/123': 没有那个文件或目录</span><br><span class="line"><span class="meta">#</span><span class="bash"> mkdir -p /tmp/<span class="built_in">test</span>/123</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls /tmp/<span class="built_in">test</span></span></span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令rmkdir"><a href="#命令rmkdir" class="headerlink" title="命令rmkdir"></a>命令rmkdir</h3><p>命令rmdir（remove directory的简写）用于删除空目录，后面可以是一个目录，也可以是多个目录（用空格分隔）。</p>
+<blockquote>
+<p>但该命令只能删除目录，不能删除文件</p>
+</blockquote>
+<h3 id="命令rm"><a href="#命令rm" class="headerlink" title="命令rm"></a>命令rm</h3><p>-r：删除目录用的选项，类似于rmdir，但可以删除非空目录。下面阿铭先创建一连串的目录，然后尝试删除它们。示例命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mkdir -p /tmp/<span class="built_in">test</span>/123</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> rm -r /tmp/<span class="built_in">test</span>/123</span></span><br><span class="line">rm:是否删除目录 '/tmp/test/123'? y</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>和rmdir不同的是，在使用rm –r命令删除目录时，会询问是否删除，如果输入y，则会删除，如果输入n，则不删除。</p>
+</blockquote>
+<p>-f：表示强制删除。它不会询问是否删除，而是直接删除。即使后面跟一个不存在的文件或者目录，也不会报错。下面阿铭尝试删除一个不存在的目录，示例命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> rm /tmp/<span class="built_in">test</span>/123/123</span></span><br><span class="line">rm: 无法删除 '/tmp/test/123/123': 没有那个文件或目录</span><br><span class="line"><span class="meta">#</span><span class="bash"> rm -f /tmp/<span class="built_in">test</span>/123/123</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="命令cp"><a href="#命令cp" class="headerlink" title="命令cp"></a>命令cp</h3><p>cp是copy（即复制）的简写，该命令的格式为：cp [选项] [ 来源文件 ] [目的文件]。例如，若想把test1文件复制成test2文件，则可以写为cp test1 test2。</p>
+<blockquote>
+<p>-r：如果要复制一个目录，必须加-r选项，否则不能复制</p>
+</blockquote>
+<blockquote>
+<p>-i：这是安全选项，当遇到一个目的文件名已存在的文件时，会询问是否覆盖，这也与rm命令类似。</p>
+</blockquote>
+<h3 id="命令mv"><a href="#命令mv" class="headerlink" title="命令mv"></a>命令mv</h3><p>mv是move（移动）的简写，该命令的格式为：mv [ 选项 ] [源文件或目录] [目标文件或目录]。该命令有如下几种情况。</p>
+<ul>
+<li>目标文件是目录，但该目录不存在。</li>
+<li>目标文件是目录，且该目录存在。</li>
+<li>目标文件是文件，且该文件不存在。</li>
+<li>目标文件是文件，但该文件存在。</li>
+</ul>
+<p>当目标文件是目录时，在其存在与不存在的两种情况下，执行mv命令后的结果是不一样的。如果该目录存在，则会把源文件或目录移动到该目录中。如果该目录不存在，则会把源目录重命名为给定的目标文件名。</p>
+<p>当目标文件是文件时，在其存在与不存在的两种情况下，执行mv命令后的结果也是不一样的。如果该文件存在，则会询问是否覆盖。如果该文件不存在，则会把源文件重命名为给定的目标文件名。</p>
+<h3 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h3><p>命令cat（这并不是某个单词的简写，大家可以通过man cat命令查看它的解释）是比较常用的一个命令，用于查看一个文件的内容并将其显示在屏幕上。cat后面可以不加任何选项，直接跟文件名。</p>
+<p>-n：查看文件时，把行号也显示到屏幕上。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span>  <span class="string">'111111111'</span> &gt; dirb/filee</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span>  <span class="string">'222222222'</span> &gt;&gt; dirb/filee</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat dirb/filee</span></span><br><span class="line">111111111</span><br><span class="line">222222222</span><br><span class="line"><span class="meta">#</span><span class="bash"> cat -n dirb/filee</span></span><br><span class="line">     1  111111111</span><br><span class="line">     2  222222222</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上例中出现了符号&gt;&gt;，它跟前面介绍的符号&gt;类似，作用也是重定向，即把前面的内容输入到后面的文件中，但符号&gt;&gt;是“追加”的意思。当使用符号&gt;时，如果文件中有内容，则会删除文件中原有的内容，而使用符号&gt;&gt;则不会。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> tac dirb/filee</span></span><br><span class="line">222222222</span><br><span class="line">111111111</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令tac"><a href="#命令tac" class="headerlink" title="命令tac"></a>命令tac</h3><p>和命令cat一样，命令tac（正好是命令cat的反序写法）也是把文件的内容显示在屏幕上，只不过是先显示最后一行，然后显示倒数第二行，最后才显示第一行。</p>
+<h3 id="命令more"><a href="#命令more" class="headerlink" title="命令more"></a>命令more</h3><p>命令more也用于查看一个文件的内容，后面直接跟文件名。当文件内容太多，一屏不能全部显示时，用命令cat肯定是看不了前面的文件内容，这时可以使用命令more。当看完一屏后，按空格键可以继续看下一屏，看完所有内容后就会退出，可以按Ctrl+B向上翻屏，按Ctrl+F向下翻屏（同空格）。如果想提前退出，按Q键即可。</p>
+<h2 id="文件的所有者和所属组"><a href="#文件的所有者和所属组" class="headerlink" title="文件的所有者和所属组"></a>文件的所有者和所属组</h2><p>每一个Linux目录或者文件，都会有一个所有者（owner）和所属组（group）。所有者是指文件的拥有者，所属组是指这个文件属于哪一个用户组，Linux这样设置文件属性是为文件的安全着想。</p>
+<p>例如，test文件的所有者是owner0，而test1文件的所有者是owner1，那么owner1很有可能是不可以查看test文件的，相应地，owner0也很有可能不可以查看test1文件（之所以说可能，是因为owner0和owner1有可能属于同一个用户组，而恰好这个用户组对这两个文件都有查看权限）。</p>
+<p>有时我们也会有这样的需求：使一个文件能同时被owner0和owner1查看，这怎么实现呢？这时“所属组”就派上用场了。先创建一个组owners，让owner0和owner1同属于这个组，然后建立一个文件test2，且其所属组为owners，这样owner0和owner1就都可以访问test2文件。Linux文件属性不仅规定了所有者和所属组，还规定了所有者、所属组以及其他用户（others）对该文件的权限。我们可以通过ls -l命令来查看这些属性，代码如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ls -l /etc/passwd</span></span><br><span class="line">-rw-r--r--. 1 root root 1080 12月 26 08:08 /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中，第3列（用空格划分列）和第4列的root就是所有者和所属组。</p>
+</blockquote>
+<h2 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h2><p>在上例中，用ls –l命令查看当前目录下的文件时，共显示了9列内容（用空格划分列），它们都代表什么含义呢？</p>
+<h3 id="第1列"><a href="#第1列" class="headerlink" title="第1列"></a>第1列</h3><p>包含所查看文件的类型、所有者、所属组以及其他用户对该文件的权限。第1列共11位，其中第1位用来描述该文件的类型。上例中我们看到的文件类型是-，其实除了这个，还有d、l、b、c、s等，具体描述如下所示。</p>
+<ul>
+<li><p>-表示该文件为普通文件。</p>
+</li>
+<li><p>d表示该文件为目录。</p>
+</li>
+<li><p>l表示该文件为链接文件（link file）</p>
+</li>
+<li><p>b表示该文件为块设备，比如/dev/sda就是这样的文件，磁盘分区文件就是这种类型。</p>
+</li>
+<li><p>c表示该文件为串行端口设备文件（又称字符设备文件），比如键盘、鼠标、打印机、tty终端等都是这样的文件。</p>
+</li>
+<li><p>s表示该文件为套接字文件（socket），应用于进程之间的通信，后面讲到MySQL时会用到该类型的文件。<br>在文件类型后面紧接着的9位，每3位为一组，上例中（lrwxrwxrwx.）的这9位均为rwx这3个参数的组合。其中，r代表可读，w代表可写，x代表可执行。前3位为所有者的权限，中间3位为所属组的权限，最后3位为其他非本用户组的用户的权限。</p>
+</li>
+</ul>
+<p>假设一个文件的属性为-rwxr-xr–.，它代表的意思是，该文件为普通文件，文件所有者对其可读、可写且可执行，文件所属组对其可读、不可写但可执行，其他用户对其只可读。对于一个目录来讲，打开这个目录即为执行这个目录，所以任何一个用户必须要有x权限才能打开并查看该目录下的内容。例如，一个目录的属性为drwxr–r–.，其所有者为root，只有root有x权限，那么除root之外的所有用户都不能打开这个目录。</p>
+<p>关于前面提到的第1列最后1位的“.”，阿铭要特别说明一下。老版本CentOS 5是没有这个点的，这主要是因为新版本的ls命令添加了SELinux或者acl的属性。如果文件或者目录使用了SELinux context的属性，这里会是一个点“.”；如果使用了acl的属性，这里会是一个加号“+”。关于SELinux和acl，阿铭不在此详细介绍，你只要了解是怎么回事即可。</p>
+<h3 id="第2列："><a href="#第2列：" class="headerlink" title="第2列："></a>第2列：</h3><p>表示该文件占用的节点（inode），如果是目录，那么这个数值与该目录下的子目录数量有关。</p>
+<h3 id="第3列："><a href="#第3列：" class="headerlink" title="第3列："></a>第3列：</h3><p>表示该文件的所有者。</p>
+<h3 id="第4列："><a href="#第4列：" class="headerlink" title="第4列："></a>第4列：</h3><p>表示该文件的所属组。</p>
+<h3 id="第5列："><a href="#第5列：" class="headerlink" title="第5列："></a>第5列：</h3><p>表示该文件的大小。</p>
+<h3 id="第6列、第7列和第8列："><a href="#第6列、第7列和第8列：" class="headerlink" title="第6列、第7列和第8列："></a>第6列、第7列和第8列：</h3><p>表示该文件最后一次被修改的时间（mtime），依次为月、日以及具体时间。</p>
+<h3 id="第9列："><a href="#第9列：" class="headerlink" title="第9列："></a>第9列：</h3><p>表示文件名</p>
+<h2 id="更改文件的权限"><a href="#更改文件的权限" class="headerlink" title="更改文件的权限"></a>更改文件的权限</h2><h3 id="命令chown"><a href="#命令chown" class="headerlink" title="命令chown"></a>命令chown</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> groupadd testgroup // 创建组</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> mkdir dir3</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> useradd user1 // 创建用户组</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> touch dir3/test3</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> chown user1 dir3 // 修改dir3目录的所有者，但是目录下的test3文件依然是root</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> chown -R user1:testgroup dir3 // 把<span class="built_in">test</span>目录以及该目录下的文件的所有者都修改成user1，所属组都修改成testgroup。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="命令chmod"><a href="#命令chmod" class="headerlink" title="命令chmod"></a>命令chmod</h3><p>为了方便更改文件的权限，Linux使用数字代替rwx，具体规则为：用4表示r，用2表示w，用1表示x，用0表示-。例如，rwxrwx—用数字表示就是770，其具体算法为：rwx=4+2+1=7，rwx=4+2+1=7，—=0+0+0=0。</p>
+<p>命令chmod（change mode的简写）用于改变用户对文件/目录的读、写和执行权限，其格式为：chmod [-R] xyz 文件名（这里的xyz表示数字）。其中，-R选项的作用等同于chown命令的-R选项，也表示级联更改。值得注意的是，在Linux系统中，一个目录的默认权限为755，而一个文件的默认权限为644。</p>
+<h2 id="在Linux下搜索文件"><a href="#在Linux下搜索文件" class="headerlink" title="在Linux下搜索文件"></a>在Linux下搜索文件</h2><h3 id="用which命令查找可执行文件的绝对路径"><a href="#用which命令查找可执行文件的绝对路径" class="headerlink" title="用which命令查找可执行文件的绝对路径"></a>用which命令查找可执行文件的绝对路径</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">which</span> vi</span></span><br><span class="line">/usr/bin/vi</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">which</span> cat</span></span><br><span class="line">/usr/bin/cat</span><br></pre></td></tr></table></figure>
+
+<h3 id="用whereis命令查找文件"><a href="#用whereis命令查找文件" class="headerlink" title="用whereis命令查找文件"></a>用whereis命令查找文件</h3><p>whereis命令通过预先生成的一个文件列表库查找与给出的文件名相关的文件，其格式为whereis [-bms] [文件名称]，其中各选项的含义如下所示。</p>
+<ul>
+<li>-b：只查找二进制文件。</li>
+<li>-m：只查找帮助文件（在man目录下的文件）。</li>
+<li>-s：只查找源代码文件。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> whereis ls</span></span><br><span class="line">ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以看到，共找到了两个文件。这个命令类似于模糊查找，只要文件名包含ls字符，就会将此文件列出来。</p>
+</blockquote>
+<h2 id="用户和用户组管理"><a href="#用户和用户组管理" class="headerlink" title="用户和用户组管理"></a>用户和用户组管理</h2><h3 id="新增组的命令groupadd"><a href="#新增组的命令groupadd" class="headerlink" title="新增组的命令groupadd"></a>新增组的命令groupadd</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> groupadd grptest1</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> tail -n1 /etc/group</span></span><br><span class="line">grptest1:x:1002:</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> groupadd -g 1008 grptest2</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> tail -n2 /etc/group</span></span><br><span class="line">grptest1:x:1002:</span><br><span class="line">grptest2:x:1008:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果不加-g选项，则按照系统默认的gid创建组。跟uid一样，gid也是从1000开始的。</p>
+</blockquote>
+<h3 id="删除组的命令groupdel"><a href="#删除组的命令groupdel" class="headerlink" title="删除组的命令groupdel"></a>删除组的命令groupdel</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> groupdel grptest2</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> tail -n2 /etc/group</span></span><br><span class="line">slocate:x:21:</span><br><span class="line">grptest1:x:1002:</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果组中包含账户，只有删除账户后才可以删除组。</p>
+</blockquote>
+<h3 id="增加用户的命令useradd"><a href="#增加用户的命令useradd" class="headerlink" title="增加用户的命令useradd"></a>增加用户的命令useradd</h3><p>从字面意思上看，useradd就是增加用户，该命令的格式为useradd [-u UID] [-g GID] [-d HOME] [-M] [-s]，其中各个选项的具体含义如下。</p>
+<ul>
+<li>-u：表示自定义UID。</li>
+<li>-g：表示使新增用户属于某个已经存在的组，后面可以跟组id，也可以跟组名。</li>
+<li>-d：表示自定义用户的家目录。</li>
+<li>-M：表示不建立家目录。</li>
+<li>-s：表示自定义shell。</li>
+</ul>
+<h2 id="用户密码管理"><a href="#用户密码管理" class="headerlink" title="用户密码管理"></a>用户密码管理</h2><h3 id="命令passwd"><a href="#命令passwd" class="headerlink" title="命令passwd"></a>命令passwd</h3><p>用户创建后，默认是没有设置密码的。只有设置好密码后，才可以登录系统。为了安全，在为用户创建密码时，请尽量设置复杂一些。</p>
+<blockquote>
+<p>为用户设置密码时，可以使用命令passwd，其格式为passwd [username]。该命令后面若不加用户名，则是为自己设定密码，示例命令如下：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> passwd</span></span><br><span class="line">更改用户root的密码 。</span><br><span class="line">新的 密码：</span><br><span class="line">重新输入新的 密码：</span><br><span class="line">passwd： 所有的身份验证令牌已经成功更新。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果你登录的是root用户，则后面可以跟普通用户的名字，意思是修改指定用户的密码，示例命令如下：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> passwd user11</span></span><br><span class="line">更改用户 user11 的密码 。</span><br><span class="line">新的 密码：</span><br><span class="line">重新输入新的 密码：</span><br><span class="line">passwd： 所有的身份验证令牌已经成功更新。</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令mkpasswd"><a href="#命令mkpasswd" class="headerlink" title="命令mkpasswd"></a>命令mkpasswd</h3><p>命令mkpasswd用于生成密码。我们安装的Linux默认是没有这个命令的，因此需要安装一个expect软件包，安装命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> yum install -y expect</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> mkpasswd</span></span><br><span class="line"><span class="meta">$</span><span class="bash">C7iuod6M</span></span><br></pre></td></tr></table></figure>
+
+<p>有时，我们需要生成指定长度的密码，这个用mkpasswd命令也可以满足。比如，生成12位长度的密码，示例命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mkpasswd -l 12</span></span><br><span class="line">j8nUg/0rddZh</span><br></pre></td></tr></table></figure>
+
+<p>当然，我们还可以指定密码中有几个特殊字符或有几个数字，示例命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mkpasswd -l 12 -s 0 -d 3</span></span><br><span class="line">yr4jm6SiwZ4p</span><br></pre></td></tr></table></figure>
+
+<h3 id="不允许root远程登录Linux"><a href="#不允许root远程登录Linux" class="headerlink" title="不允许root远程登录Linux"></a>不允许root远程登录Linux</h3><p>/etc/ssh/sshd_config为sshd服务的配置文件，默认允许root用户通过ssh远程登录Linux。要想不允许root用户远程登录Linux，具体操作方法为：修改配置文件/etc/ssh/sshd_config，在文件中查找PermitRootLogin yes并修改为PermitRootLogin no。保存配置文件后，需要重启sshd服务，命令如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> systemctl restart sshd.service</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装RPM包或源码包"><a href="#安装RPM包或源码包" class="headerlink" title="安装RPM包或源码包"></a>安装RPM包或源码包</h2><h3 id="安装RPM包"><a href="#安装RPM包" class="headerlink" title="安装RPM包"></a>安装RPM包</h3><p>安装RPM包的命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> yum install –y wget  // 安装wget命令，wget为下载工具</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> wget http://mirrors.aliyun.com/centos/8/BaseOS/x86_64/os/Packages/at-3.1.20-11.el8.x86_64.rpm</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> rpm -ivh at-3.1.20-11.el8.x86_64.rpm</span></span><br><span class="line">Verifying...                          ################################# [100%]</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:at-3.1.20-11.el8                 ################################# [100%]</span><br></pre></td></tr></table></figure>
+
+<p>其中各个选项的含义如下。</p>
+<ul>
+<li>-i：表示安装。</li>
+<li>-v：表示可视化。</li>
+<li>-h：表示显示安装进度。</li>
+</ul>
+<h3 id="卸载RPM包"><a href="#卸载RPM包" class="headerlink" title="卸载RPM包"></a>卸载RPM包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> rpm -qa at</span></span><br><span class="line">at-3.1.20-11.el8.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> rpm -e at</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="升级RPM包"><a href="#升级RPM包" class="headerlink" title="升级RPM包"></a>升级RPM包</h3><p>升级RPM包的命令为rpm -Uvh filename，其中-U选项表示升级。</p>
+<h3 id="查询一个包是否已安装"><a href="#查询一个包是否已安装" class="headerlink" title="查询一个包是否已安装"></a>查询一个包是否已安装</h3><p>rpm -q 包名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> rpm -q at</span></span><br><span class="line">未安装软件包 at</span><br><span class="line"><span class="meta">#</span><span class="bash"> rpm -ivh at-3.1.20-11.el8.x86_64.rpm</span></span><br><span class="line">Verifying...                          ################################# [100%]</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:at-3.1.20-11.el8                 ################################# [100%]</span><br><span class="line"><span class="meta">#</span><span class="bash"> rpm -q at</span></span><br><span class="line">at-3.1.20-11.el8.x86_64</span><br></pre></td></tr></table></figure>
+
+<h3 id="得到一个已安装的RPM包的相关信息"><a href="#得到一个已安装的RPM包的相关信息" class="headerlink" title="得到一个已安装的RPM包的相关信息"></a>得到一个已安装的RPM包的相关信息</h3><p>rpm -qi 包名</p>
+<h2 id="yum工具"><a href="#yum工具" class="headerlink" title="yum工具"></a>yum工具</h2><h3 id="搜索RPM包"><a href="#搜索RPM包" class="headerlink" title="搜索RPM包"></a>搜索RPM包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> yum list // 全部</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> yum list | grep 包名 // 过滤的方式</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装RPM包-1"><a href="#安装RPM包-1" class="headerlink" title="安装RPM包"></a>安装RPM包</h3><p>安装RPM包的命令为yum install [-y] [RPM包名]，如果不加-y选项，则会以与用户交互的方式安装。</p>
+<h3 id="卸载RPM包-1"><a href="#卸载RPM包-1" class="headerlink" title="卸载RPM包"></a>卸载RPM包</h3><p>卸载RPM包的命令为yum remove [-y] [RPM包名]</p>
+<h2 id="安装源码包"><a href="#安装源码包" class="headerlink" title="安装源码包"></a>安装源码包</h2><p>安装源码包通常需要以下3个步骤。</p>
+<ol>
+<li><p>./configure。这一步可以定制功能，加上相应的选项即可，具体有什么选项可以通过命令./configure –help来查看。这一步会自动检测你的Linux系统与相关的套件是否有编译该源码包时所需要的库，因为一旦缺少某个库，就不能完成编译。只有检测通过后，才会生成Makefile文件。</p>
+</li>
+<li><p>make。使用这个命令，会根据Makefile文件中预设的参数进行编译，这一步其实就是gcc在工作。</p>
+</li>
+<li><p>make install。这一步是安装步骤，用于创建相关软件的存放目录和配置文件。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/05/movie/" rel="prev" title="影视推荐（一）">
+      <i class="fa fa-chevron-left"></i> 影视推荐（一）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件和目录"><span class="nav-number">1.</span> <span class="nav-text">文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件和目录的命令"><span class="nav-number">1.1.</span> <span class="nav-text">文件和目录的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令cd"><span class="nav-number">1.1.1.</span> <span class="nav-text">命令cd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-mkdir-mp"><span class="nav-number">1.1.2.</span> <span class="nav-text">命令 mkdir [-mp]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令rmkdir"><span class="nav-number">1.1.3.</span> <span class="nav-text">命令rmkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令rm"><span class="nav-number">1.1.4.</span> <span class="nav-text">命令rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令cp"><span class="nav-number">1.1.5.</span> <span class="nav-text">命令cp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令mv"><span class="nav-number">1.1.6.</span> <span class="nav-text">命令mv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cat命令"><span class="nav-number">1.1.7.</span> <span class="nav-text">cat命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令tac"><span class="nav-number">1.1.8.</span> <span class="nav-text">命令tac</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令more"><span class="nav-number">1.1.9.</span> <span class="nav-text">命令more</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件的所有者和所属组"><span class="nav-number">1.2.</span> <span class="nav-text">文件的所有者和所属组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件属性"><span class="nav-number">1.3.</span> <span class="nav-text">文件属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1列"><span class="nav-number">1.3.1.</span> <span class="nav-text">第1列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2列："><span class="nav-number">1.3.2.</span> <span class="nav-text">第2列：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3列："><span class="nav-number">1.3.3.</span> <span class="nav-text">第3列：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4列："><span class="nav-number">1.3.4.</span> <span class="nav-text">第4列：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5列："><span class="nav-number">1.3.5.</span> <span class="nav-text">第5列：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6列、第7列和第8列："><span class="nav-number">1.3.6.</span> <span class="nav-text">第6列、第7列和第8列：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第9列："><span class="nav-number">1.3.7.</span> <span class="nav-text">第9列：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改文件的权限"><span class="nav-number">1.4.</span> <span class="nav-text">更改文件的权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令chown"><span class="nav-number">1.4.1.</span> <span class="nav-text">命令chown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令chmod"><span class="nav-number">1.4.2.</span> <span class="nav-text">命令chmod</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Linux下搜索文件"><span class="nav-number">1.5.</span> <span class="nav-text">在Linux下搜索文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用which命令查找可执行文件的绝对路径"><span class="nav-number">1.5.1.</span> <span class="nav-text">用which命令查找可执行文件的绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用whereis命令查找文件"><span class="nav-number">1.5.2.</span> <span class="nav-text">用whereis命令查找文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户和用户组管理"><span class="nav-number">1.6.</span> <span class="nav-text">用户和用户组管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新增组的命令groupadd"><span class="nav-number">1.6.1.</span> <span class="nav-text">新增组的命令groupadd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除组的命令groupdel"><span class="nav-number">1.6.2.</span> <span class="nav-text">删除组的命令groupdel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加用户的命令useradd"><span class="nav-number">1.6.3.</span> <span class="nav-text">增加用户的命令useradd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户密码管理"><span class="nav-number">1.7.</span> <span class="nav-text">用户密码管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令passwd"><span class="nav-number">1.7.1.</span> <span class="nav-text">命令passwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令mkpasswd"><span class="nav-number">1.7.2.</span> <span class="nav-text">命令mkpasswd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不允许root远程登录Linux"><span class="nav-number">1.7.3.</span> <span class="nav-text">不允许root远程登录Linux</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装RPM包或源码包"><span class="nav-number">1.8.</span> <span class="nav-text">安装RPM包或源码包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装RPM包"><span class="nav-number">1.8.1.</span> <span class="nav-text">安装RPM包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载RPM包"><span class="nav-number">1.8.2.</span> <span class="nav-text">卸载RPM包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级RPM包"><span class="nav-number">1.8.3.</span> <span class="nav-text">升级RPM包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询一个包是否已安装"><span class="nav-number">1.8.4.</span> <span class="nav-text">查询一个包是否已安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#得到一个已安装的RPM包的相关信息"><span class="nav-number">1.8.5.</span> <span class="nav-text">得到一个已安装的RPM包的相关信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yum工具"><span class="nav-number">1.9.</span> <span class="nav-text">yum工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索RPM包"><span class="nav-number">1.9.1.</span> <span class="nav-text">搜索RPM包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装RPM包-1"><span class="nav-number">1.9.2.</span> <span class="nav-text">安装RPM包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载RPM包-1"><span class="nav-number">1.9.3.</span> <span class="nav-text">卸载RPM包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装源码包"><span class="nav-number">1.10.</span> <span class="nav-text">安装源码包</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XuRunZhi"
+      src="/images/tx.jpg">
+  <p class="site-author-name" itemprop="name">XuRunZhi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xurunzhi123456@gmail.com" title="E-Mail → mailto:xurunzhi123456@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XuRunZhi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
